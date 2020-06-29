@@ -198,14 +198,18 @@ namespace xadrez
                 {
                     for(int j = 0; j < Tabuleiro.Colunas; j++)
                     {
-                        Posicao origem = peca.Posicao;
-                        Posicao destino = new Posicao(i, j);
-                        Peca pecaCapiturada = ExecutarMovimento(origem, destino);
-                        bool testeXeque = EstaEmXeque(cor);
-                        DesfazMovimento(origem, destino, pecaCapiturada);
-                        if (!testeXeque)
+
+                        if (mat[i,j])
                         {
-                            return false;
+                            Posicao origem = peca.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapiturada = ExecutarMovimento(origem, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(origem, destino, pecaCapiturada);
+                            if (!testeXeque)
+                            {
+                                return false;
+                            } 
                         }
                     }
                 }
